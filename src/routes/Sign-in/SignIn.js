@@ -1,12 +1,12 @@
 import {
     signInWithGooglePopup,
-    createUserProfileDocument
+    createUserDocumentFromAuth
   } from '../../Firebase.Utils/FirebaseUtils';
 
   const SignIn = () => {
     const logGoogleUser = async () => {
       const { user } = await signInWithGooglePopup();
-      const userDocRef = await createUserProfileDocument(user)
+      const userDocRef = await createUserDocumentFromAuth(user)
     //   createUserProfileDocument(user);
     };
 
