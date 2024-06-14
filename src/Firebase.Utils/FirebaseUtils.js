@@ -32,3 +32,32 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+
+export const db = getFirestore();
+
+export const createUserDocumentfromAuth = async (userAuth) => {
+  const useDocRef = doc(db, "user", userAuth.uid);
+
+  // console.log(useDocRef)
+
+  const userSnapShot = await getDoc(useDocRef);
+  // console.log(userSnapShot)
+  console.log(userSnapShot.exists());
+
+  // if (!userSnapShot.exists()) {
+  //   const { displayName, email } = userAuth;
+  //   const createdAt = new Date();
+
+  //   try {
+  //     await setDoc(useDocRef, {
+  //       displayName,
+  //       email,
+  //       createdAt,
+  //     });
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
+
+  // check if user dtata exists
+};
